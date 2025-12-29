@@ -13,6 +13,20 @@ const divisionSchema = new Schema<IDivision>(
   }
 );
 
+// divisionSchema.pre("save", async function (next){
+
+//   if(this.isModified("name")){
+
+//   }
+
+
+//   next()
+// })
+
+
+
+
+
 export const Division = model<IDivision>("Division", divisionSchema);
 
 /**
@@ -28,3 +42,18 @@ converts to lowercase
 
 pluralizes the model name
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
