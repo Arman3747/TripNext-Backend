@@ -1,16 +1,31 @@
-import { Router } from "express";
 import { UserControllers } from "./user.controller";
+import { createUserZodSchema, updateUserZodSchema } from "./user.validation";
+import { validateRequest } from "../../middlewares/validateRequest";
+import { Router } from "express";
 
+import { checkAuth } from "../../middlewares/checkAuth";
+import { Role } from "./user.interface";
 
-const router = Router()
+const router = Router();
 
+router.post(
+  "/register",
+  validateRequest(createUserZodSchema),
+  UserControllers.createUser
+); //don't call
 
-router.post("/register", UserControllers.createUser) //don't call
-router.get("/all-users", UserControllers.getAllUsers) //don't call
+router.get(
+  "/all-users",
+  checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
+  UserControllers.getAllUsers
+); //don't call
 
-export const UserRoutes = router
+// /api/v1/user/:id
+router.patch(
+  "/:id",
+  validateRequest(updateUserZodSchema),
+  checkAuth(...Object.values(Role)),
+  UserControllers.updateUser
+);
 
-
-
-
-
+export const UserRoutes = router;

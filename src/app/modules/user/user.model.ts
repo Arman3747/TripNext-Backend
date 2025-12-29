@@ -36,7 +36,6 @@ const userSchema = new Schema<IUser>(
 
     //booking - will add later
     //guide - will add later
-
   },
   {
     timestamps: true,
@@ -44,5 +43,4 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-
-export const User = model<IUser>("User", userSchema)
+export const User = model<IUser>("User", userSchema);
