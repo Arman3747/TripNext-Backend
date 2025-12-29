@@ -14,3 +14,17 @@ const divisionSchema = new Schema<IDivision>(
 );
 
 export const Division = model<IDivision>("Division", divisionSchema);
+
+/**
+ * ✅ What happens in MongoDB
+
+Model name: User
+
+Collection name created in MongoDB: users
+
+👉 Mongoose:
+
+converts to lowercase
+
+pluralizes the model name
+*/
