@@ -35,7 +35,7 @@ router.delete(
 );
 
 /* --------------------- TOUR ROUTES ---------------------- */
-// router.get("/", TourController.getAllTours); // ----> ok
+router.get("/", TourController.getAllTours);
 
 router.post(
   "/create",
