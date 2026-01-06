@@ -28,6 +28,7 @@ export const checkAuth =
         throw new AppError(httpStatus.BAD_REQUEST, "Email Does not Exists !");
       }
 
+      //
       if (
         isUserExist.isActive === IsActive.BLOCKED ||
         isUserExist.isActive === IsActive.INACTIVE
@@ -40,6 +41,9 @@ export const checkAuth =
 
       if (isUserExist.isDeleted) {
         throw new AppError(httpStatus.BAD_REQUEST, "User Is Deleted !");
+      }
+       if (!isUserExist.isVerified) {
+        throw new AppError(httpStatus.BAD_REQUEST, "User Is not Verified !");
       }
 
       // console.log(verifiedToken);
