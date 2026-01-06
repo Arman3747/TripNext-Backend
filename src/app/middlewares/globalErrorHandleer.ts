@@ -10,8 +10,9 @@ import {
   handleZodError,
 } from "../helpers/handleErrors";
 import { TErrorSources } from "../interfaces/error.types";
+import { deleteImageFromCloudinary } from "../config/cloudinary.config";
 
-export const globalErrorHandler = (
+export const globalErrorHandler = async (
   err: any,
   req: Request,
   res: Response,
@@ -21,6 +22,18 @@ export const globalErrorHandler = (
     // eslint-disable-next-line no-console
     console.log(err);
   }
+
+  if (req.file) {
+    await deleteImageFromCloudinary(req.file.path);
+  }
+
+  if (req.files && Array.isArray(req.files) && req.files.length) {
+    const imageUrls = (req.files as Express.Multer.File[]).map(
+      (file) => file.path
+    );
+    await Promise.all(imageUrls.map((url) => deleteImageFromCloudinary(url)));
+  }
+
   /**
    * Error FROM
    * Mongoose

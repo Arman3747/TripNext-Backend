@@ -5,11 +5,10 @@ import { DivisionService } from "./division.service";
 import { IDivision } from "./division.interface";
 
 const createDivision = catchAsync(async (req: Request, res: Response) => {
-  
-  const payload :IDivision = {
+  const payload: IDivision = {
     ...req.body,
     thumbnail: req.file?.path,
-  }
+  };
   const result = await DivisionService.createDivision(payload);
   sendResponse(res, {
     statusCode: 201,
@@ -44,7 +43,12 @@ const getSingleDivision = catchAsync(async (req: Request, res: Response) => {
 const updateDivision = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  const result = await DivisionService.updateDivision(id, req.body);
+  const payload: IDivision = {
+    ...req.body,
+    thumbnail: req.file?.path,
+  };
+
+  const result = await DivisionService.updateDivision(id, payload);
   sendResponse(res, {
     statusCode: 200,
     success: true,
