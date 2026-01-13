@@ -27,6 +27,7 @@ interface EnvConfig {
     SSL_STORE_PASS: string;
     SSL_PAYMENT_API: string;
     SSL_VALIDATION_API: string;
+    SSL_IPN_URL: string;
 
     SSL_SUCCESS_BACKEND_URL: string;
     SSL_FAIL_BACKEND_URL: string;
@@ -75,6 +76,7 @@ const loadEnvVariables = (): EnvConfig => {
     "SSL_STORE_PASS",
     "SSL_PAYMENT_API",
     "SSL_VALIDATION_API",
+    "SSL_IPN_URL",
 
     "SSL_SUCCESS_BACKEND_URL",
     "SSL_FAIL_BACKEND_URL",
@@ -130,6 +132,7 @@ const loadEnvVariables = (): EnvConfig => {
       SSL_STORE_PASS: process.env.SSL_STORE_PASS as string,
       SSL_PAYMENT_API: process.env.SSL_PAYMENT_API as string,
       SSL_VALIDATION_API: process.env.SSL_VALIDATION_API as string,
+      SSL_IPN_URL: process.env.SSL_IPN_URL as string,
 
       SSL_SUCCESS_BACKEND_URL: process.env.SSL_SUCCESS_BACKEND_URL as string,
       SSL_FAIL_BACKEND_URL: process.env.SSL_FAIL_BACKEND_URL as string,
