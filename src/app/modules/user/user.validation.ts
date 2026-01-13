@@ -58,22 +58,22 @@ export const updateUserZodSchema = z.object({
     .max(50, { message: "Name cannot exceed 50 characters." })
     .optional(),
   //1 uppercase, 1 special character, i gigit, 8 character min
-  password: z
-    .string({
-      error: (issue) =>
-        issue.input === undefined ? "This field is required" : "Not a string",
-    })
-    .min(8, { message: "Password must be at least 8 character long." })
-    .regex(/^(?=.*[A-Z])/, {
-      message: "Password must contain at least 1 uppercase letter.",
-    })
-    .regex(/^(?=.*[!@#$%^&*])/, {
-      message: "Password must contain at least 1 special character.",
-    })
-    .regex(/^(?=.*\d)/, {
-      message: "Password must contain at least 1 number",
-    })
-    .optional(),
+  // password: z
+  //   .string({
+  //     error: (issue) =>
+  //       issue.input === undefined ? "This field is required" : "Not a string",
+  //   })
+  //   .min(8, { message: "Password must be at least 8 character long." })
+  //   .regex(/^(?=.*[A-Z])/, {
+  //     message: "Password must contain at least 1 uppercase letter.",
+  //   })
+  //   .regex(/^(?=.*[!@#$%^&*])/, {
+  //     message: "Password must contain at least 1 special character.",
+  //   })
+  //   .regex(/^(?=.*\d)/, {
+  //     message: "Password must contain at least 1 number",
+  //   })
+  //   .optional(),
   phone: z
     .string({
       error: (issue) =>

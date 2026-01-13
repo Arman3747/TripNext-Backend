@@ -22,6 +22,9 @@ router.get(
   UserControllers.getAllUsers
 ); //don't call
 
+
+
+
 // /api/v1/user/:id
 router.patch(
   "/:id",
