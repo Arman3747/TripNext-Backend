@@ -72,7 +72,7 @@ const getInvoiceDownloadUrl = catchAsync(
 
 const validatePayment = catchAsync(async (req: Request, res: Response) => {
   // eslint-disable-next-line no-console
-  console.log("sslcommerzipn ipn url body", req.body);
+  console.log("sslcommerz ipn ipn url body", req.body);
   await SSLService.validatePayment(req.body);
 
   sendResponse(res, {

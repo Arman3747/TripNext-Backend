@@ -1,5 +1,7 @@
 node_modules
 .env
+.env.dev
+.gitignore
 
 
 
@@ -14,3 +16,4 @@ node_modules
 
 
 
+.vercel

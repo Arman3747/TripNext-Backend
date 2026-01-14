@@ -21,6 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set("trust proxy", 1);
 app.use(
   cors({
     origin: envVars.FRONTEND_URL,
@@ -33,6 +34,7 @@ app.use("/api/v1", router);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
+    success: true,
     message: "Welcome to Tour Management Backend!",
   });
 });
